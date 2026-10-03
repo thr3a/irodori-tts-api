@@ -11,7 +11,7 @@ services:
     volumes:
       - ./hf_cache:/root/.cache/huggingface
       - ./voices:/voices
-    command: ["/app/.venv/bin/python", "-m", "irodori_openai_tts"]      
+    command: ["/app/.venv/bin/python", "-m", "irodori_openai_tts"]
       # - ./server.py:/app/server.py
     # env_file:
     #   - .env

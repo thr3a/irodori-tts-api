@@ -23,13 +23,8 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
 RUN git clone --depth 1 https://github.com/Aratako/Irodori-TTS-Server.git .
 
-# COPY pyproject.toml uv.lock ./
-
 RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     uv sync --locked --no-dev --no-install-project --extra "${IRODORI_TTS_BACKEND}"
-
-# COPY README.md LICENSE ./
-# COPY src ./src
 
 RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     uv sync --locked --no-dev --no-editable --extra "${IRODORI_TTS_BACKEND}"
