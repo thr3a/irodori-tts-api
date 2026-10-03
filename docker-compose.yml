@@ -11,6 +11,13 @@ services:
     volumes:
       - ./hf_cache:/root/.cache/huggingface
       - ./voices:/voices
+    environment:
+      - IRODORI_HF_CHECKPOINT=Aratako/Irodori-TTS-v4.1-Small-MF
+      - IRODORI_MODEL_DEVICE=cuda
+      - IRODORI_MODEL_PRECISION=bf16
+      - IRODORI_CODEC_PRECISION=bf16
+      - IRODORI_COMPILE_MODEL=true
+      - IRODORI_PRELOAD=true
     command: ["/app/.venv/bin/python", "-m", "irodori_openai_tts"]
       # - ./server.py:/app/server.py
     # env_file:
