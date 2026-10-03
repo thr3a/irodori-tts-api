@@ -25,5 +25,3 @@ services:
               capabilities: [gpu]
     # restart: unless-stopped
 
-volumes:
-  hf_cache:
