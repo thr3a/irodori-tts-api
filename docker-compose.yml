@@ -18,6 +18,7 @@ services:
       - IRODORI_CODEC_PRECISION=bf16
       - IRODORI_COMPILE_MODEL=true
       - IRODORI_PRELOAD=true
+      - IRODORI_VOICES_DIR=/voices
     command: ["/app/.venv/bin/python", "-m", "irodori_openai_tts"]
       # - ./server.py:/app/server.py
     # env_file:
