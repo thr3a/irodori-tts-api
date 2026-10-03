@@ -1,0 +1,29 @@
+services:
+  app:
+    container_name: irodori-tts-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IRODORI_TTS_BACKEND: ${IRODORI_TTS_BACKEND:-cu128}
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./hf_cache:/root/.cache/huggingface
+      - ./voices:/voices
+    command: ["/app/.venv/bin/python", "-m", "irodori_openai_tts"]      
+      # - ./server.py:/app/server.py
+    # env_file:
+    #   - .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              # count: all
+              capabilities: [gpu]
+    # restart: unless-stopped
+
+volumes:
+  hf_cache:
